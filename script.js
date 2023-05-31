@@ -4,6 +4,7 @@ const btnNews = document.querySelector('.news-btn')
 const error = document.querySelector('.error');
 const main = document.querySelector('.newsletter');
 const back = document.querySelector('.success');
+const inputText = document.querySelector('input::placeholder')
 let regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[A-Z0-9-]{2,3}$/i;
 
 
@@ -16,12 +17,16 @@ const checkEmail = (e) => {
         error.textContent = ''  
     } else {
        error.textContent = 'Valid email required'
+       emailInput.style.background = 'hsla(4, 100%, 67%,50%)';
+       emailInput.classList.add('change-color')
        emailInput.value = ''
     }
 }
 const removeError = () => {
     if(emailInput.value.length > 0 ) {
-        error.textContent = ''  
+        emailInput.style.background = ''
+        error.textContent = ''
+        emailInput.classList.remove('change-color')  
     }
 }
 const confirm = () => {
@@ -36,3 +41,4 @@ const confirm = () => {
 btnNews.addEventListener('click', checkEmail)
 emailInput.addEventListener('keyup', removeError)
 btnSuccess.addEventListener('click', confirm)
+
